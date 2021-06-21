@@ -34,4 +34,8 @@ input, button {
   border: none;
   font-family: inherit;
 }
+
+button {
+  cursor: pointer;
+}
 /*# sourceMappingURL=reset.css.map */
