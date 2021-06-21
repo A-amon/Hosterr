@@ -1,0 +1,302 @@
+@import "color.scss";
+@import "typography.scss";
+@import "reset.scss";
+@import "breakpoints.scss";
+
+$padding-small:25px;
+$padding-medium:50px;
+$padding-large:100px;
+
+.d-flex{
+    display: flex;
+    align-items: center;
+}
+
+body{
+    background:$quarter-spanish-white;
+    font-family: $font-lato;
+}
+
+.hiring__button, .hero__text{
+    font-family: $font-playfair;
+}
+
+header{
+    @extend .d-flex;
+    height:80px;
+    padding:0 $padding-small;
+    position: relative;
+
+    @include laptop-query{
+        padding:0 $padding-medium;
+    }
+
+    @include laptop-l-query{
+        padding:0 $padding-large;
+    }
+
+    .header__logo{
+        margin-right:0.5rem;
+    }
+
+    .hiring__button{
+        background:linear-gradient(to right,$ronchi, $soft-red);
+        padding:0.5rem 1rem;
+        border-radius:50px;
+        color:$quarter-spanish-white;
+        font-size:0.8rem;
+        min-width: fit-content;
+    }
+
+    .menu__button{
+        height: 1.5rem;
+        width: 1.5rem;
+        background-size: cover;
+        margin-left: auto;
+
+        @include laptop-query{
+            display: none;
+        }
+
+        &[data-isopen="false"]{
+            background-image:url("../../assets/icons/hamburger.png");
+        }
+        &[data-isopen="true"]{
+            background-image:url("../../assets/icons/cross.png");
+        }
+
+        &[data-isopen="true"] + nav{
+            display: block;
+        }
+    }
+
+    nav{
+        display: none;
+        position: absolute;
+        top:100%;
+        left:0;
+        height:calc(100vh - 80px);
+        width: 100%;
+        background:$quarter-spanish-white;
+        z-index: 1;
+        padding:1rem;
+        box-sizing: border-box;
+        text-align: center;
+
+        @include laptop-query{
+            display: flex;
+            position: unset;
+            height: unset;
+            background:unset;
+            padding:unset;
+            margin:auto;
+        }
+    }
+
+    .nav__links{
+        @include laptop-query{
+            display: flex;
+            align-items: center;
+            margin-left: auto;
+        }
+    }
+
+    .nav__link{
+        margin:1.5rem 0;
+        @include laptop-query{
+            &:not(:last-child){
+                margin-right: 1.5rem;
+            }
+        }
+    }
+
+    .nav__link a{
+        font-size: 1rem;
+        display: block;
+
+        @include laptop-query{
+            &:not(.nav__button):hover{
+                text-decoration: underline;
+            }
+        }
+    }
+
+    .nav__button{
+        padding:1rem;
+        background:$blue;
+        color: $quarter-spanish-white;
+        border-radius:5px;
+    }
+}
+
+main, footer{
+    padding:$padding-small;
+    @include laptop-query{
+        padding: $padding-medium;
+    }
+
+    @include laptop-l-query{
+        padding:$padding-medium $padding-large;
+    }
+}
+
+.hero{
+    @include laptop-query{
+        display: flex;
+        align-items: center;
+    }
+
+    &__content{
+        @include laptop-query{
+            order:1;
+            flex:1;
+            margin-right: 2rem;
+            max-width: 450px;
+        }
+    }
+
+    &__image{
+        position: relative;
+        @include laptop-query{
+            order:2;
+            flex:1;
+        }
+    }
+
+    &__image img{
+        width: 60%;
+        object-fit: cover;
+        margin:auto;
+        display: block;
+
+        @include laptop-query{
+            width: 80%;
+            max-width: 450px;
+        }
+
+        &:nth-child(3){
+            transform: rotate(-12deg);
+        }
+
+        &:nth-child(2){
+            transform: rotate(-24deg);
+        }
+
+        &:first-child{
+            transform:rotate(-45deg);
+        }
+    }
+
+    &__image img:not(:last-child){
+        position: absolute;
+        top:0;
+        left:0;
+        right:0;
+        margin:auto;
+        z-index: -1;
+        transform-origin: center;
+    }
+
+    &__text{
+        font-size: 2.5rem;
+        margin:1rem 0;
+    }
+
+    p{
+        margin-bottom: 1rem;
+    }
+
+    &__form input, &__form button{
+        width: 100%;
+        padding:1rem;
+        box-sizing: border-box;
+        border-radius: 5px;
+    }
+
+    &__form button{
+        background:$blue;
+        color:$quarter-spanish-white;
+        margin:1rem 0;
+    }
+
+    &__reminder{
+        position: relative;
+        color:$light-gray;
+        margin-left: 1.5rem;
+        font-size: 0.8rem;
+    }
+
+    &__reminder::before{
+        content:'';
+        height:1rem;
+        width: 1rem;
+        background:url("../../assets/icons/Checkmark.svg");
+        background-size: cover;
+        display: inline-block;
+        position: absolute;
+        top:0;
+        bottom:0;
+        left:-1.5rem;
+        margin:auto;
+    }
+}
+
+footer{
+    @include laptop-query{
+        display: flex;
+        align-items: center;
+    }
+
+    .social__links{
+        @extend .d-flex;
+        color:$light-gray;
+        margin-bottom:2rem;
+
+        @include laptop-query{
+            margin: 0;
+        }
+    }
+
+    .social__link{
+        margin-right:1rem;
+        @include laptop-query{
+            &:hover{
+                text-decoration: underline
+            }
+        }
+    }
+
+    .footer__talk{
+        @extend .d-flex;
+        position: relative;
+
+        @include laptop-query{
+            margin-left: auto;
+        }
+    }
+    
+    .footer__talk img{
+        margin-right: 1rem;
+    }
+
+    .footer__talk__text span{
+        display: block;
+        
+        &:first-child{
+            font-family: $font-playfair;
+        }
+        
+        &:last-child{
+            font-weight: bold;
+        }
+    }
+
+    .footer__talk a{
+        display: block;
+        position: absolute;
+        top:0;
+        left:0;
+        width: 100%;
+        height: 100%;
+    }
+}
